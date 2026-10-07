@@ -13816,6 +13816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   torqueAmount: 10
+  baseSpeed: 15
+  boostSpeed: 20
 --- !u!58 &1015546184
 CircleCollider2D:
   m_ObjectHideFlags: 0
