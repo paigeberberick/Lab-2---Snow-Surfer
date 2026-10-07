@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D myRigidbody2D;
     SurfaceEffector2D surfaceEffector2D;
     Vector2 moveVector;
-
+    public bool canControlPlayer = true;
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -21,10 +21,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveVector = moveAction.ReadValue<Vector2>();
+       if (canControlPlayer)
+        {
+            moveVector = moveAction.ReadValue<Vector2>();
+            RotatePlayer();
+            BoostPlayer();
+        }
 
-        RotatePlayer();
-        BoostPlayer();
+        
     }
 
     void RotatePlayer()
@@ -49,5 +53,9 @@ public class PlayerMovement : MonoBehaviour
         {
             surfaceEffector2D.speed = baseSpeed;
         }
+    }
+    public void DisableControls()
+    {
+        canControlPlayer = false;
     }
 }
